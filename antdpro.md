@@ -108,4 +108,49 @@ export default function two(props:any) {
 
 { component:'@/pages/404' }
 
+## 1.3 mock
+
+### 1.3.1 mock
+path:/opt/myapp/mock/index.ts
+```ts 
+export default {
+    '/api/index':{
+        id:1,
+        name:'Tom',
+        age:12
+    },
+    'GET /api/person':{
+        id:2,
+        name:'lili',
+        age:22
+    }
+}
+```
+
+### 1.3.2 request
+```tsx
+import styles from './index.less';
+import {request} from 'umi'
+//add
+import {DatePicker,Button} from 'antd'
+
+
+export default function IndexPage() {
+    const getData = async ()=>{
+        //请求数据
+        const res = await request('/api/index')
+        console.log(res)
+
+    }
+  return (
+    <div>
+      
+      <h1 className={styles.title}>Page index</h1>
+      <DatePicker />
+      <Button onClick={getData}>click</Button>
+    </div>
+  );
+}
+```
+
 
